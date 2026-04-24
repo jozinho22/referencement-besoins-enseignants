@@ -1,16 +1,13 @@
-// src/app/page.tsx (PAS DE "use client" ICI)
-import MapWrapper from '@/components/MapWrapper';
-import NeedList from '@/components/NeedList'; // Si NeedList est un Client Component
-import { TEACHER_NEEDS } from "@/data/teacher-needs";
+// src/app/page.tsx
+import { DynamicContent } from '@/components/DynamicContent';
 
-export default async function Home() {
-  // 1. Récupération des données côté serveur (très rapide)
-
+export default function Home() {
   return (
     <main className="container mx-auto p-4 space-y-8">
       <h1 className="text-3xl font-bold">Portail des Besoins Enseignants</h1>
       <section>
-        <NeedList />
+        {/* On appelle le pont qui gère le ssr: false proprement */}
+        <DynamicContent />
       </section>
     </main>
   );

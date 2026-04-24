@@ -1,12 +1,11 @@
 "use client";
 import { useState } from 'react';
-import { TeacherNeed } from '@/types/TeacherNeed';
 import NeedCard from './NeedCard';
 import { TEACHER_NEEDS } from "@/data/teacher-needs";
 
 import MapWrapper from './MapWrapper'; // Importe ton wrapper ici
 
-export default function NeedList() {
+export default function Content() {
   const [activeFilter, setActiveFilter] = useState('Tous');
   const initialNeeds = TEACHER_NEEDS;
 

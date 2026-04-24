@@ -25,7 +25,7 @@ export default function NeedCard({ need }: NeedCardProps) {
 
       <div className="flex justify-between items-center">
         <span className="text-sm font-semibold text-blue-600"><u>Académie :</u> {need.academie}</span>
-        <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+        <span className={`${colors.bg} text-xs px-2 py-1 rounded ${colors.text}`}>
           {need.nbPostes} postes
         </span>
       </div>
