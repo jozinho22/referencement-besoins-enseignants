@@ -1,14 +1,11 @@
 import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',      // <--- Indispensable pour GitHub Pages
+const nextConfig: NextConfig = {
+  output: 'export',
   images: {
-    unoptimized: true,   // GitHub Pages ne supporte pas l'optimisation d'image native de Next
+    unoptimized: true,
   },
-  // Si ton projet est sur https://ton-nom.github.io/ton-depot/
-  // décommente et ajuste la ligne suivante :
-  // basePath: '/ton-nom-de-depot', 
+  basePath: "/referencement-besoins-enseignants"
 };
 
 export default nextConfig;

@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # ou master
+    branches: [main]
 
 permissions:
   contents: read
@@ -12,16 +12,23 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # On force l'utilisation de Node 24 pour les actions comme demandé
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24' # On passe à la version 24
+          
       - run: npm install
       - run: npm run build
+      
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out # Dossier généré par Next.js
+          path: ./out
 
   deploy:
     needs: build
