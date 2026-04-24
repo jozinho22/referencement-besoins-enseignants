@@ -1,3 +1,16 @@
+// On exporte le type généré par Prisma comme étant LE type de référence
+export interface TeacherNeed {
+  id: string | number;
+  subject: string;
+  title: string;
+  description: string;
+  teacher: string;
+  gradeLevel: string;
+  priority: Priority;
+  createdAt: Date;
+  region?: string; // Optionnel, si tu l'ajoutes plus tard
+}
+
 export type Subject = 
   | 'Mathematics' 
   | 'French' 
@@ -8,13 +21,3 @@ export type Subject =
   | 'Physical Education';
 
 export type Priority = 'Low' | 'Medium' | 'High' | 'Urgent';
-
-export interface TeacherNeed {
-  id: string;
-  subject: Subject;
-  title: string;
-  description: string;
-  gradeLevel: string; // e.g., "Middle School", "10th Grade"
-  createdAt: string;
-  priority: Priority;
-}
