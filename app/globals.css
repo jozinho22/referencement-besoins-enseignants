@@ -14,8 +14,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #afafaf;
+    --foreground: #4a4a4a;
+
+    --color-orange-600: lab(55 24.5 30.82) !important;
+    --color-red-600: lab(47 54.08 29.29) !important;
+    --color-yellow-600: lab(66 7.64 42.27) !important;
+    --color-blue-600: lab(50 4.25 -35.76) !important;
   }
 }
 
@@ -24,3 +29,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.bg-white {
+  background-color: #e0e0e0 !important;
+}
+
+.bg-blue-600 {
+  background-color: #5c6e8c !important;
+}
+
+u {
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1.4px;
+  text-decoration-color: lab(50.36% 3.58 -35.47 / 0.695);
+}
+ 

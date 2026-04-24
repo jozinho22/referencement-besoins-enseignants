@@ -1,23 +1,18 @@
+// src/app/page.tsx (PAS DE "use client" ICI)
+import MapWrapper from '@/components/MapWrapper';
+import NeedList from '@/components/NeedList'; // Si NeedList est un Client Component
 import { getTeacherNeeds } from '@/services/api';
-import NeedList from '@/components/NeedList';
 
 export default async function Home() {
-  // On récupère les données sur le serveur
+  // 1. Récupération des données côté serveur (très rapide)
   const needs = await getTeacherNeeds();
 
   return (
-    <main className="min-h-screen p-8 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <header className="mb-10">
-          <h1 className="text-4xl font-extrabold text-gray-900">
-            Plateforme des Besoins Enseignants
-          </h1>
-          <p className="text-gray-600 mt-2">
-            Consultez et filtrez les demandes par matière.
-          </p>
-        </header>
-        <NeedList />
-      </div>
+    <main className="container mx-auto p-4 space-y-8">
+      <h1 className="text-3xl font-bold">Portail des Besoins Enseignants</h1>
+      <section>
+        <NeedList initialNeeds={needs} />
+      </section>
     </main>
   );
 }

@@ -1,11 +1,12 @@
-export async function getTeacherNeeds() {
-  try {
-    // On utilise un chemin relatif. Next.js saura quoi faire.
-    const response = await fetch('/api/teacher-needs');
-    if (!response.ok) throw new Error('Erreur de chargement');
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+import rawData from '@/data/teacher-needs.json';
+import { TeacherNeed, Priority, Location } from '@/types/need';
+
+export async function getTeacherNeeds(): Promise<TeacherNeed[]> {
+  return rawData.map((item) => ({
+    ...item,
+    id: String(item.id), // On s'assure que l'ID est bien une string
+    createdAt: new Date(item.createdAt),
+    priority: item.priority as Priority,
+    location: item.location as Location
+  }));
 }

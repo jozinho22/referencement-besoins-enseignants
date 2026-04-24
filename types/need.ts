@@ -1,14 +1,22 @@
+export interface Location {
+  name: string;
+  lat: number;
+  lng: number;
+}
+
 // On exporte le type généré par Prisma comme étant LE type de référence
 export interface TeacherNeed {
   id: string | number;
   subject: string;
   title: string;
+  nbPostes: number;
+  academie: string;
   description: string;
   teacher: string;
   gradeLevel: string;
   priority: Priority;
+  location: Location;
   createdAt: Date;
-  region?: string; // Optionnel, si tu l'ajoutes plus tard
 }
 
 export type Subject = 

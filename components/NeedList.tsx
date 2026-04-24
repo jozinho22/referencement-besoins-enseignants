@@ -1,76 +1,58 @@
 "use client";
-
-import { useState, useEffect } from 'react';
-import { TeacherNeed, Subject } from '@/types/need';
-import { getTeacherNeeds } from '@/services/api';
+import { useState } from 'react';
+import { TeacherNeed } from '@/types/need';
 import NeedCard from './NeedCard';
+import MapWrapper from './MapWrapper'; // Importe ton wrapper ici
 
-export default function NeedList() {
-  // 1. États pour les données et le filtre
-  const [needs, setNeeds] = useState<TeacherNeed[]>([]);
-  const [selectedSubject, setSelectedSubject] = useState<Subject | 'All'>('All');
-  const [isLoading, setIsLoading] = useState(true);
+export default function NeedList({ initialNeeds }: { initialNeeds: TeacherNeed[] }) {
+  const [activeFilter, setActiveFilter] = useState('Tous');
 
-  // 2. Chargement des données au montage du composant
-  useEffect(() => {
-    async function loadData() {
-      const data = await getTeacherNeeds();
-      setNeeds(data);
-      setIsLoading(false);
-    }
-    loadData();
-  }, []); // [] signifie : s'exécute une seule fois au chargement
+  // 1. On calcule la liste filtrée UNE SEULE FOIS ici
+  const filteredNeeds = activeFilter === 'Tous' 
+    ? initialNeeds 
+    : initialNeeds.filter(need => need.subject === activeFilter);
 
-  // 3. Logique de filtrage basée sur les besoins récupérés
-  const filteredNeeds = selectedSubject === 'All' 
-    ? needs 
-    : needs.filter(need => need.subject === selectedSubject);
-
-  // 4. Extraction des matières uniques pour les boutons de filtre
-  const availableSubjects = Array.from(new Set(needs.map(n => n.subject)));
-
-  if (isLoading) return <p className="text-center py-10">Chargement des données nationales...</p>;
+  const subjects = ['Tous', ...Array.from(new Set(initialNeeds.map(n => n.subject)))];
 
   return (
-    <section>
-      {/* --- BARRE DE FILTRES --- */}
-      <div className="flex flex-wrap gap-3 mb-10">
-        <button
-          onClick={() => setSelectedSubject('All')}
-          className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer border
-            ${selectedSubject === 'All' 
-              ? 'bg-blue-600 text-white border-blue-600 shadow-md' 
-              : 'bg-white text-gray-700 hover:bg-gray-100 border-gray-300'}`}
-        >
-          Tous
-        </button>
-
-        {availableSubjects.map((subject) => (
-          <button
+    <div className="space-y-8">
+      {/* Barre de Filtres */}
+      <div className="flex flex-wrap gap-2 pb-4 border-b">
+        {subjects.map(subject => (
+          <button style={{cursor: "pointer"}}
             key={subject}
-            onClick={() => setSelectedSubject(subject as Subject)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer border
-              ${selectedSubject === subject 
-                ? 'bg-blue-600 text-white border-blue-600 shadow-md' 
-                : 'bg-white text-gray-700 hover:bg-gray-100 border-gray-300'}`}
+            onClick={() => setActiveFilter(subject)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all
+              ${activeFilter === subject 
+                ? 'bg-blue-600 text-white shadow-md' 
+                : 'bg-white text-gray-600 border border-gray-200 hover:border-blue-400'}`}
           >
             {subject}
           </button>
         ))}
       </div>
 
-      {/* --- GRILLE DE RÉSULTATS --- */}
-      {filteredNeeds.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredNeeds.map((need) => (
-            <NeedCard key={need.id} need={need} />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-20 bg-white rounded-xl border-2 border-dashed border-gray-200">
-          <p className="text-gray-500">Aucun besoin trouvé pour cette matière.</p>
+      {/* LA CARTE : Elle reçoit maintenant les besoins filtrés ! */}
+      <section className="w-full">
+        <MapWrapper needs={filteredNeeds} />
+        <p className="text-sm text-gray-500 mt-2">
+          Affichage de {filteredNeeds.length} besoin(s) sur la carte
+        </p>
+      </section>
+
+      {/* LA GRILLE DE CARTES */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredNeeds.map(need => (
+          <NeedCard key={need.id} need={need} />
+        ))}
+      </div>
+
+      {/* Message vide */}
+      {filteredNeeds.length === 0 && (
+        <div className="text-center py-20 bg-gray-50 rounded-xl border-2 border-dashed">
+          <p className="text-gray-500 font-medium">Aucun poste disponible pour cette matière.</p>
         </div>
       )}
-    </section>
+    </div>
   );
 }
