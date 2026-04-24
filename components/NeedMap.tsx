@@ -2,11 +2,13 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { TeacherNeed } from '@/types/need';
+import { TEACHER_NEEDS } from "@/data/teacher-needs";
+import { TeacherNeed } from '@/types/TeacherNeed';
 import { getPriorityColor } from '@/utils/colors';
 
 
 export default function NeedMap({ needs }: { needs: TeacherNeed[] }) {
+
   return (
     <div className="h-[500px] w-full rounded-2xl overflow-hidden border-2 border-slate-100 shadow-lg z-0">
       <MapContainer 

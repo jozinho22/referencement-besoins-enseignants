@@ -16,7 +16,7 @@ export interface TeacherNeed {
   gradeLevel: string;
   priority: Priority;
   location: Location;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export type Subject = 

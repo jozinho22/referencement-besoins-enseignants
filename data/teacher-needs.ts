@@ -1,4 +1,6 @@
-[
+import { TeacherNeed } from '@/types/TeacherNeed';
+
+export const TEACHER_NEEDS: TeacherNeed[] = [
   {
     "id": "2026-VSA-MATH",
     "subject": "Mathématiques",

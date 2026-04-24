@@ -1,4 +1,4 @@
-import { TeacherNeed } from '@/types/need';
+import { TeacherNeed } from '@/types/TeacherNeed';
 import { getPriorityColor } from '@/utils/colors';
 
 interface NeedCardProps {
@@ -6,13 +6,6 @@ interface NeedCardProps {
 }
 
 export default function NeedCard({ need }: NeedCardProps) {
-  // Petite logique pour la couleur de la priorité
-  const priorityColors = {
-    Low: 'bg-blue-100 text-blue-800',
-    Medium: 'bg-yellow-100 text-yellow-800',
-    High: 'bg-orange-100 text-orange-800',
-    Urgent: 'bg-red-100 text-red-800',
-  };
 
   const colors = getPriorityColor(need.priority);
 
