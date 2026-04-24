@@ -1,7 +1,8 @@
 "use client";
 import { useState } from 'react';
 import NeedCard from './NeedCard';
-import { TEACHER_NEEDS } from "@/data/teacher-needs";
+import { TEACHER_NEEDS } from "@/data/agri-teacher-needs";
+// import { TEACHER_NEEDS } from "@/data/teacher-needs";
 
 import MapWrapper from './MapWrapper'; // Importe ton wrapper ici
 

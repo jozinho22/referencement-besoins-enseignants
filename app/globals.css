@@ -31,16 +31,32 @@ body {
 }
 
 .bg-white {
-  background-color: #e0e0e0 !important;
+  background-color: #cfcece !important;
 }
 
 .bg-blue-600 {
   background-color: #5c6e8c !important;
 }
 
+.bg-slate-50 {
+  background-color: #f7f6f6 !important;
+}
+
 u {
   text-underline-offset: 5px;
   text-decoration-thickness: 1.4px;
-  text-decoration-color: lab(50.36% 3.58 -35.47 / 0.695);
+  
+}
+
+.text-blue-600 {
+  & > u {text-decoration-color: lab(50.36% 3.58 -35.47 / 0.695);}
 }
  
+.text-orange-600 {
+  & > u {text-decoration-color: lab(55 24.5 30.82 / 0.695);}
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: #e0e0e0 !important;
+  color: var(--foreground) !important;
+}

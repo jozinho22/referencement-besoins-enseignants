@@ -1,21 +1,16 @@
-export interface Location {
-  name: string;
-  lat: number;
-  lng: number;
-}
-
-// On exporte le type généré par Prisma comme étant LE type de référence
 export interface TeacherNeed {
   id: string | number;
   subject: string;
-  title: string;
-  nbPostes: number;
-  academie: string;
-  description: string;
-  teacher: string;
-  gradeLevel: string;
-  priority: Priority;
   location: Location;
+
+  grandeCategorie?: string;
+  title?: string;
+  numeroPoste?: number;
+  quotite?: string;
+  description?: string;
+  gradeLevel?: string;
+  priority?: Priority;
+  nbPostes?: number;
   createdAt: string;
 }
 
@@ -28,4 +23,11 @@ export type Subject =
   | 'Languages' 
   | 'Physical Education';
 
-export type Priority = 'Low' | 'Medium' | 'High' | 'Urgent';
+export type Priority = 'Low' | 'Medium' | 'High' | 'Urgent' | '';
+
+export interface Location {
+  establishment: string;
+  academia?: string;
+  lat: number;
+  lng: number;
+}

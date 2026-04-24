@@ -20,7 +20,7 @@ export default function Footer() {
 
           {/* Section Droite : Crédits Légaux */}
           <div className="max-w-md">
-            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">
+            <h3 className="text-s font-semibold text-slate-400 uppercase tracking-widest mb-3">
               Crédits et Licences
             </h3>
             <ul className="text-xs text-slate-500 space-y-2 leading-relaxed">
@@ -34,15 +34,16 @@ export default function Footer() {
                 <strong>Icônes :</strong> <a href="https://github.com/pointhi/leaflet-color-markers" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Leaflet-color-markers</a> (BSD 2-Clause). Copyright © 2013-2020 Thomas Pointhuber.
               </li>
               <li>
-                <strong>Données :</strong> Simulations basées sur les tendances de l'Éducation Nationale.
+                <strong>Données :</strong> Simulations basées sur les tendances de l'Éducation Nationale et de l'Éducation agricole.
               </li>
             </ul>
           </div>
         </div>
 
         {/* Note de bas de page */}
-        <div className="mt-8 pt-6 border-t border-slate-200 text-[10px] text-slate-400 text-center">
-          Ce site est un outil de visualisation de données à but éducatif et n'est pas affilié au Ministère de l'Éducation Nationale.
+        <div className="mt-8 pt-6 border-t border-slate-200 text-[12px] text-slate-400 text-center">
+          Ce site est un outil de visualisation de données à but éducatif et n'est pas affilié au Ministère de l'Éducation Nationale ni à celui de l'Agriculture.
+          <br /> <br />Ce site est pour l'instant en test.
         </div>
       </div>
     </footer>

@@ -2,12 +2,12 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { TEACHER_NEEDS } from "@/data/teacher-needs";
 import { TeacherNeed } from '@/types/TeacherNeed';
+
 import { getPriorityColor } from '@/utils/colors';
 
 
-export default function NeedMap({ needs }: { needs: TeacherNeed[] }) {
+export default function NeedMap({ needs }: { needs: TeacherNeed[]}) {
 
   return (
     <div className="h-[500px] w-full rounded-2xl overflow-hidden border-2 border-slate-100 shadow-lg z-0">
@@ -46,13 +46,28 @@ export default function NeedMap({ needs }: { needs: TeacherNeed[] }) {
             <Marker key={need.id} position={[need.location.lat, need.location.lng]} icon={customIcon}>
                 <Popup>
                     <div className="p-2 min-w-[150px]">
-                    <h3 className="font-bold text-lg mb-1">{need.subject}</h3>
-                    <p className="text-sm">📍 <strong>{need.academie}</strong></p>
-                    
-                    {/* Couleur synchronisée ici */}
-                    <p className={`text-sm mt-1 font-bold ${colors.text}`}>
-                        {need.nbPostes} postes ({need.priority})
-                    </p>
+                      <div className={`p-4 rounded-xl border ${colors.border} ${colors.bg}`}>
+                        <span className={`text-xs font-bold uppercase tracking-wider ${colors.text}`}>
+                          {need.priority}
+                        </span>
+                        <h3 className="text-lg font-bold text-slate-600 mt-1">{need.subject}</h3>
+                      </div>
+                      <p className="text-sm">📍 <strong>{need.location.academia}</strong></p>
+                      
+                      {/* Couleur synchronisée ici */}
+                      <p className={`text-sm mt-1 font-bold ${colors.text}`}>
+                          {need.nbPostes ? `poste${need.nbPostes > 1 ? "s" : ""}` : ""}                         
+                          {need.priority ? ` (${need.priority})` : ""}
+                      </p>
+                      <div className="flex justify-between items-center">
+                        <div className="flex flex-col wrap flex-start items-start gap-4">
+                          <span className="text-sm font-semibold text-blue-600"><u>Académie :</u> {need.location.academia}</span>
+                          {need.location.academia !== need.location.establishment ? 
+                            <span className="text-sm font-semibold text-orange-600"><u>Établissement :</u> {need.location.establishment}</span>
+                            : ""
+                          }
+                        </div>
+                      </div>
                     </div>
                 </Popup>
           </Marker>

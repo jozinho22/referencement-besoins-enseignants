@@ -1,4 +1,4 @@
-export const getPriorityColor = (priority: string) => {
+export const getPriorityColor = (priority: string | undefined) => {
   switch (priority) {
     case 'Urgent': 
       return { text: 'text-red-600', bg: 'bg-red-50', border: 'border-red-200', hex: 'red' };
