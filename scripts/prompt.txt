@@ -1,0 +1,45 @@
+J'aimerais que tu récupères des informations pour moi dans un fichier PDF.
+Celui en PJ.
+
+J'aimerais que tu me sortes le résultat sous forme liste JSON avec comme objets :
+```json
+{  
+    "id": 1,  
+    "numeroPoste": 2090,  
+    "subject": "Mathématiques",  
+    "location": { "establishment": "LEGTA de l'Hérault (34)", "academia": "Occitanie", "lat": 43.6611, "lng": 3.8291 },  
+    "grandeCategorie": "Scientifiques",  
+    "quotite": "100",  
+    "priority": "High",  
+    "concours": "PAEN",  
+    "description": "Un poste avec un peu d'info aussi",  
+    "createdAt": "2026-02-25T00:00:00Z"  
+  }
+```
+Le fichier est structuré de la sorte :
+
+Un tableau est présent de la page 21 jusque 100 inclus.
+- tout en haut de chaque page, un seul encadré à ne pas prendre en compte
+- juste après, on a la catégorie de matières, le champ "grandeCategorie"
+- juste en dessous on a :
+      - les matières ("Mathématiques", "Français"...etc) que tu pourras mettre dans "subject"
+      - suivi après un "/" du type d'emploi enseignant ("Professeurs agrégés du second degré de l'éducation nationale", "Professeurs certifiés de l'enseignement agricole"...etc.) que tu pourras mettre dans "concours" en prenant l'acronyme (par exemple "Professeurs certifiés de l'enseignement agricole" deviendra "PCEA").
+
+- juste après on a le tableau a crawler avec les données :
+     - Région : cette colonne ne comporte le nom de la région qu'une seule fois pour l'ensemble des lignes de postes que tu pourras mettre dans "location"."adacemia"
+     - Etablissement : cette colonne recense le nom de l'établissement que tu pourras mettre dans "location"."establishment" en remplissant les deux champs "location"."lat" et "location"."lng" respectivement par les latitudes et longitudes basées sur le nom de l'établissement
+     - N° poste : c'est l'id du poste dans ce document que tu pourras mettre dans "numeroPoste"
+     - LIE : souvent vide, ne pas y prêter attention
+     - Quotité % : tout le temps à 100 donc tu remplir le champ "quotite" à "100"
+     - V/SV*: ce champ est important car tu récupérer les informations que j'ai énoncées plus haut uniquement si cette case est à "V".
+     - Précision : cette case est souvent vide mais s'il y a du texte rempli le champ "description" avec son contenu.
+
+Let's go ?
+
+
+
+
+
+const path = require("path");
+
+const PDF_PATH = path.join(__dirname, "2026-109_final.pdf");
