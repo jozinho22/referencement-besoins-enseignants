@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -34,7 +32,7 @@ export default function Footer() {
                 <strong>Icônes :</strong> <a href="https://github.com/pointhi/leaflet-color-markers" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Leaflet-color-markers</a> (BSD 2-Clause). Copyright © 2013-2020 Thomas Pointhuber.
               </li>
               <li>
-                <strong>Données :</strong> Simulations basées sur les tendances de l'Éducation Nationale et de l'Éducation agricole.
+                <strong>Données :</strong> Simulations basées sur les tendances de l'Éducation agricole.
               </li>
             </ul>
           </div>
@@ -42,8 +40,9 @@ export default function Footer() {
 
         {/* Note de bas de page */}
         <div className="mt-8 pt-6 border-t border-slate-200 text-[12px] text-slate-400 text-center">
-          Ce site est un outil de visualisation de données à but éducatif et n'est pas affilié au Ministère de l'Éducation Nationale ni à celui de l'Agriculture.
+          Ce site est un outil de visualisation de données à but éducatif et n'est pas affilié au Ministère de l'Agriculture.
           <br /> <br />Ce site est pour l'instant en test.
+          <br /> <br /> <br /> <br /><strong>Créé par :</strong> Josselin DOUINEAU, professeur de mathématiques.
         </div>
       </div>
     </footer>

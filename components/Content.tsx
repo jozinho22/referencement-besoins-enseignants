@@ -1,14 +1,15 @@
 "use client";
 import { useState } from 'react';
 import NeedCard from './NeedCard';
-import { TEACHER_NEEDS } from "@/data/agri-teacher-needs";
-// import { TEACHER_NEEDS } from "@/data/teacher-needs";
+import TEACHER_NEEDS from "@/data/agri-teacher-needs.json";
+import { TeacherNeed } from "@/types/TeacherNeed";
 
 import MapWrapper from './MapWrapper'; // Importe ton wrapper ici
 
 export default function Content() {
   const [activeFilter, setActiveFilter] = useState('Tous');
-  const initialNeeds = TEACHER_NEEDS;
+
+  const initialNeeds = TEACHER_NEEDS as TeacherNeed[];
 
   // 1. On calcule la liste filtrée UNE SEULE FOIS ici
   const filteredNeeds = activeFilter === 'Tous' 
@@ -38,9 +39,9 @@ export default function Content() {
       {/* LA CARTE : Elle reçoit maintenant les besoins filtrés ! */}
       <section className="w-full">
         <MapWrapper needs={filteredNeeds} />
-        <p className="text-sm text-gray-500 mt-2">
+        <h2 className="text-sm text-gray-500 mt-2">
           Affichage de {filteredNeeds.length} besoin(s) sur la carte
-        </p>
+        </h2>
       </section>
 
       {/* LA GRILLE DE CARTES */}

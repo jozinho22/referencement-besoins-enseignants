@@ -16,7 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Ref-Ens-France",
-  description: "Référencement des besoins d'enseignants en France",
+  description: "Référencement des besoins d'enseignants dans l'Enseignement Agricole français",
+  metadataBase: new URL('https://jozinho22.github.io/referencement-besoins-enseignants/'),
+  alternates: {
+    canonical: '/',
+  }
 };
 
 export default function RootLayout({
