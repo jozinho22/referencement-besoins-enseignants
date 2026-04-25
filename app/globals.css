@@ -8,6 +8,7 @@
   --color-yellow-600: lab(66 7.64 42.27) !important;
   --color-blue-600: lab(55.7% 0.66 -24.16) !important;
   --color-violet-600: lab(55 20.28 -28.19) !important;
+  --color-zinc-600: lab(51 0.75 -2.7) !important;
 }
 
 @theme inline {
@@ -82,4 +83,15 @@ u {
 
 .leaflet-popup-content-wrapper {
   padding: 0 !important;
+}
+
+@media(max-width: 450px) {
+  .flex-col {
+    flex-wrap: wrap !important;
+    align-content: center !important;
+    align-items: center !important;
+  }
+  div, h1 {
+    text-align: center !important;
+  }
 }

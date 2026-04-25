@@ -9,20 +9,20 @@ export const getPriorityColor = (priority: string | undefined) => {
     case 'Low': 
       return { text: "text-blue-600", bg: "bg-white-2", border: "border-blue-600", hex: "blue" };
     default: 
-      return { text: "text-blue-600", bg: "bg-white-2", border: "border-blue-600", hex: "blue" };
+      return { text: "text-zinc-600", bg: "bg-white-2", border: "border-zinc-600", hex: "zinc" };
   }
 };
 
-export const getSubjectsColor = (priority: string | undefined) => {
-  switch (priority) {
+export const getSubjectsColor = (subject: string | undefined) => {
+  switch (subject) {
     case 'Mathématiques': 
-      return { text: "text-blue-600", bg: "bg-white-2", border: "border-blue-600", hex: "blue" };
+      return { text: "text-blue-600", hover: "hover:text-blue-600 hover:border-blue-600", bg: "bg-white-2", border: "border-blue-600", hex: "blue" };
     case 'Mathématiques Physique-Chimie': 
-      return { text: "text-orange-600", bg: "bg-white-2", border: "border-orange-600", hex: "orange" };
+      return { text: "text-orange-600", hover: "hover:text-orange-600 hover:border-orange-600", bg: "bg-white-2", border: "border-orange-600", hex: "orange" };
     case 'Physique-Chimie': 
-      return { text: "text-violet-600", bg: "bg-violet-2", border: "border-violet-600", hex: "violet" };
+      return { text: "text-violet-600", hover: "hover:text-violet-600 hover:border-violet-600", bg: "bg-violet-2", border: "border-violet-600", hex: "violet" };
     default: 
-      return { text: "text-blue-600", bg: "bg-white-2", border: "border-blue-600", hex: "blue" };
+      return { text: "text-zinc-600", hover: "hover:text-zinc-600 hover:border-zinc-600", bg: "bg-white-2", border: "border-zinc-600", hex: "zinc" };
   }
 };
 
@@ -74,5 +74,7 @@ const colorNames = tailwindColors.map(c => c.name);
 
 // Exemple de liste des nuances (shades) habituelles
 const colorShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+
+export const isMobile = () => document.body.offsetWidth < 450;
 
 

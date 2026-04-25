@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { TeacherNeed } from '@/types/TeacherNeed';
 
-import { getPriorityColor, getSubjectsColor } from '@/utils/colors';
+import { getPriorityColor, getSubjectsColor } from '@/utils/utils';
 import NeedCard from './NeedCard';
 
 
@@ -23,7 +23,7 @@ export default function NeedMap({ needs }: { needs: TeacherNeed[]}) {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
-        {needs.map((need) => {
+        {needs.map((need, index) => {
         // const colors = getPriorityColor(need.priority);
         const colors = getSubjectsColor(need.subject);
 
@@ -48,7 +48,7 @@ export default function NeedMap({ needs }: { needs: TeacherNeed[]}) {
             <Marker key={need.id} position={[need.location.lat, need.location.lng]} icon={customIcon}>
               <Popup>
                 <div> 
-                  <NeedCard need={need} />
+                  <NeedCard need={need} numero={index}/>
                 </div>
               </Popup>
             </Marker>
