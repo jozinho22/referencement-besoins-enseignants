@@ -30,6 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <meta name="google-site-verification" content="9Sf1EI50sL5eXvrkoN0gSqwvhaKEm8ZUypEwxVj_rgk" />
+      </head>
       <body className="flex flex-col min-h-screen">
         <main className="flex-grow">
           {children}
